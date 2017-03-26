@@ -1,0 +1,899 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Timber - Wprowadzenie</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/white-mkr.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Cześć</h1>
+        <aside class="notes">
+          <p>Jest to jedno z pierwszych wystąpięń przed tak zacną publicznością więc proszę o wyrozumiałość. Jeśli powiem coś głupiego to nie śmiejcie się za głośno ;).</p>
+          <ul>
+            <li>Z szeroko pojętą branżą internetową zawodowo jestem związany od 2006 roku.</li>
+            <li>Zanim dotarłem tutaj gdzie jestem współtwożyłem jedną ze znanych poznańskich firm z branży SEO, mieszkałem w Berlinie gdzie pracowałem jako front-end developer w branży e-commerce, natomiast od Listopada 2016 współpracuje z firmą Xfive na stanowisku Front-end / WordPress developera.</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h1>Timber</h1>
+        <h2>Wprowadzenie</h2>
+        <small>Marcin Krzemiński</small>
+        <aside class="notes">
+          <p>
+            Niestety ale w tytule prezentacji nie ma literówki i tych, którzy przyszli z nadzieją, że opowiem Wam jak korzystać z popularnej aplikacji do randkowania o bardzo podobnej nazwie muszę niestety przeprosić ;)
+          </p>
+        </aside>
+      </section>
+      <section>
+        <h1>Co to jest?</h1>
+        <ul>
+          <li class="fragment">
+            Wtyczka do WordPressa stworzona przez <a href="https://www.upstatement.com">Upstatement (Jared Novack)</a>
+          </li>
+          <li class="fragment">
+            Stworzona w celu ułatwienia pracy przy tworzeniu motywów
+          </li>
+          <li class="fragment">
+            Separuje kod PHP od kodu HTML. Logika i dane dostarczane są przez PHP natomiast HTML tworzony jest przy pomocy systemu szablonów o nazwie <a href="http://twig.sensiolabs.org/">Twig</a>
+          </li>
+          <li class="fragment">
+            Automatyczna integracja z popularną wtyczką <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Dla kogo to jest?</h1>
+        <p class="fragment">
+          Dla każdego ;)
+        </p>
+        <p class="fragment">
+          <strong>Początkującym</strong> pozwoli pokonać barierę wejścia ze względu na łatwiejszą składnię.
+        </p>
+        <p class="fragment">
+          <strong>Zaawansowanym</strong> pozwoli korzystać z dobrodziejstw Twiga.
+        </p>
+        <aside class="notes">
+          <p>
+            Jak z garniturem. Sprawdź i przekonaj się czy Ci leży :).
+          </p>
+        </aside>
+      </section>
+      <section>
+        <h1>Twig - brat bliźniak</h1>
+        <ul>
+          <li class="fragment">
+            System szablonów stworzony przez tych samych ludzi, którzy stworzyli framework PHP - Symfony
+          </li>
+          <li class="fragment">
+            Prosty i zrozumiały nawet dla developerów z małym doświadczeniem
+          </li>
+          <li class="fragment">
+            Wsparcie dla takich rozwiązań jak dziedziczenie, bloki (moduły) i wiele innych
+          </li>
+          <li class="fragment">
+            Szybki bo kompilowany do czystego kodu PHP - cokolwiek to znaczy :-)
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Jak to wygląda w kodzie?</h1>
+        <pre class="fragment"><code class="php" data-trim>
+// single.php
+$context = Timber::get_context();
+$context['foo'] = 'Bar!';
+$context['post'] = new Timber/Post();
+Timber::render('single.twig', $context);</code></pre>
+        <pre class="fragment"><code class="twig" data-trim>// single.twig
+{% extends "base.twig" %}
+{% block content %}
+<h1 class="big-title">{{ foo }}</h1>
+<h2>{{ post.title }}</h2>
+<img src="{{ post.thumbnail.src }}" alt="">
+<div class="body">
+  {{ post.content }}
+</div>
+{% endblock %}</code></pre>
+      </section>
+      <section>
+        <section>
+          <h1>Instalacja i konfiguracja</h1>
+          <h2>Krok po kroku</h2>
+        </section>
+        <section>
+          <h3>
+            1. Zainstaluj odpowiednią wtyczkę
+          </h3>
+          <img src="img/01.png">
+        </section>
+        <section>
+          <h3>
+            2. Użyj timber-starter-theme
+          </h3>
+          <figure>
+            <img src="img/02.png">
+            <figcaption>
+              <small>
+                wp-content/plugins/timber-library &rightarrow; wp-content/themes/
+              </small>
+            </figcaption>
+          </figure>
+        </section>
+        <section>
+          <h3>
+            3. Aktywuj timber-starter-theme
+          </h3>
+          <img src="img/03.png">
+        </section>
+        <section>
+          <h1>
+            4. Zacznij kodować ;->
+          </h1>
+        </section>
+        <section>
+          <h1>
+            Trochę szczegółów
+          </h1>
+        </section>
+        <section>
+          <h3>
+            Struktura motywu 1 / 3
+          </h3>
+          <div class="flex-container">
+            <div class="flex-item">
+              <img src="img/04.png">
+            </div>
+            <div class="flex-item">
+              <ul>
+                <li>
+                  Wygląda jak standardowy motyw, prawda?
+                </li>
+                <li>
+                  W folderze <strong>static</strong> umieszczamy nasze pliki JS, CSS/Sass, obrazki, fonty, itp. Oczywiście można trzymać swoje assety gdzie indziej jeśli jesteśmy przyzwyczajeni do innej struktury.
+                </li>
+                <li>
+                  W folderze <strong>templates</strong> znajdują się szablony Twiga. Nazwa tego folderu także może być inna jeśli zechcemy. Konfigurację można zmienić w pliku functions.php.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>
+            Struktura motywu 2 / 3
+          </h3>
+          <div class="flex-container">
+            <div class="flex-item">
+              <img src="img/05.png">
+            </div>
+            <div class="flex-item">
+              <ul>
+                <li>
+                  Jak wspomniałem wcześniej wrzucamy tutaj nasze pliki JS, CSS/Sass, obrazki, fonty, itp.
+                </li>
+                <li>
+                  Jeśli jesteśmy przyzwyczajeni do innej struktury to oczywiście możemy zrobić tak aby było nam wygodniej. Pamiętajmy aby zostawić plik static/no-timber.html ponieważ jest on używany w momencie gdy aktywujemy motyw, a zapomnimy włączyć wtyczkę.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>
+            Struktura motywu 3 / 3
+          </h3>
+          <div class="flex-container">
+            <div class="flex-item">
+              <img src="img/06.png">
+            </div>
+            <div class="flex-item">
+              <ul>
+                <li>
+                  Większość plików odpowiada tym z folderu nadrzędnego: archive, index, page, single, itd.
+                </li>
+                <li>
+                  Plik <strong>base.twig</strong> jest naszym głównym kontenerem. Zawiera w sobie bloki a także importuje części naszego motywy. Następnie plik ten jest używany poprzez funkcję <strong>extend</strong> w poszczególnych szablonach. Możemy mieć kilka kontenerów jeśli zajdzie taka potrzeba. Plik ten oczywiście może się nazywać inaczej np.: pagelayout.twig, layout.twig, full-widht.twig, itd.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h1>
+            Trochę kodu
+          </h1>
+        </section>
+        <section>
+          <h3>
+            functions.php
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+if ( ! class_exists( 'Timber' ) ) {
+  add_action( 'admin_notices', function() {
+      echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php') ) . '</a></p></div>';
+  });
+
+  add_filter('template_include', function($template) {
+    return get_stylesheet_directory() . '/static/no-timber.html';
+  });
+
+  return;
+}
+
+Timber::$dirname = array('templates', 'views');
+
+class StarterSite extends TimberSite {
+
+  function __construct() {
+    add_theme_support( 'post-formats' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
+    add_filter( 'timber_context', array( $this, 'add_to_context' ) );
+    add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
+    add_action( 'init', array( $this, 'register_post_types' ) );
+    add_action( 'init', array( $this, 'register_taxonomies' ) );
+    parent::__construct();
+  }
+
+  function register_post_types() {
+    //this is where you can register custom post types
+  }
+
+  function register_taxonomies() {
+    //this is where you can register custom taxonomies
+  }
+
+  function add_to_context( $context ) {
+    $context['foo'] = 'bar';
+    $context['stuff'] = 'I am a value set in your functions.php file';
+    $context['notes'] = 'These values are available everytime you call Timber::get_context();';
+    $context['menu'] = new TimberMenu();
+    $context['site'] = $this;
+    return $context;
+  }
+
+  function myfoo( $text ) {
+    $text .= ' bar!';
+    return $text;
+  }
+
+  function add_to_twig( $twig ) {
+    /* this is where you can add your own functions to twig */
+    $twig->addExtension( new Twig_Extension_StringLoader() );
+    $twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
+    return $twig;
+  }
+
+}
+
+new StarterSite();</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                W liniach 1 - 10 na wypadek gdybyśmy nie aktywowali wtyczki
+              </li>
+              <li>
+                W lini 13 ustawiamy w jakich folderach naszego motywy Timber ma szukać szablów Twiga
+              </li>
+              <li>
+                W liniach 17 - 25 mam konstruktor z konfiguracją motywu a także filtrami i akcjami
+              </li>
+              <li>
+                Mamy też miejsce na custom post type oraz taxonomię
+              </li>
+              <li>
+                W lini 36 ciekawa funkcja dzięki której mamy dostęp do tych zmiennych globalnie w obrębie wszystkich szablonów aktywnego motywu.
+              </li>
+              <li>
+                W lini 45 przykładowy filtr, który jest zarejestrowany w metodzie poniżej w lini 53.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            base.twig
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% block html_head_container %}
+  {% include 'html-header.twig' %}
+  {% block head %}
+  {% endblock %}
+  </head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+  <header class="header" >
+    {% block header %}
+      <div class="wrapper">
+        <h1 class="hdr-logo" role="banner">
+          <a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
+        </h1>
+        <nav id="nav-main" class="nav-main" role="navigation">
+          {% include "menu.twig" with {'menu': menu.get_items} %}
+        </nav><!-- #nav -->
+      </div>
+    {% endblock %}
+  </header>
+
+  <section id="content" role="main" class="content-wrapper">
+    {% if title %}<h1>{{title}}</h1>{% endif %}
+      <div class="wrapper {{sidebar_class}}">
+        {% block content %}
+          Sorry, no content
+        {% endblock %}
+      </div>
+      {% if sidebar %}
+        <aside class="layout-sidebar">
+          {{sidebar}}
+        </aside>
+      {% endif %}
+  </section>
+
+    {% block footer %}
+      <footer id="footer">
+        {% include 'footer.twig' %}
+      </footer>
+      {{ function('wp_footer') }}
+    {% endblock %}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                zwróćcie uwagę na bloki html_head_container, header, content, itd.
+              </li>
+              <li>
+                w lini 13 warto zwrócić uwagę na zmienną site, która zawiera w sobie kilka pomocnych wartości
+              </li>
+              <li>
+                W lini 16 includujemy menu.twig
+              </li>
+              <li>
+                zamiast function('wp_footer') można po prostu użyć {{ wp_footer }}
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            index.php
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+$context = Timber::get_context();
+$context['posts'] = Timber::get_posts();
+$context['foo'] = 'bar';
+$templates = array( 'index.twig' );
+if ( is_home() ) {
+  array_unshift( $templates, 'home.twig' );
+}
+Timber::render( $templates, $context );</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                1 - pobieramy context
+              </li>
+              <li>
+                2 - pobieramy posty
+              </li>
+              <li>
+                3 - zmienna z prostym tekstem
+              </li>
+              <li>
+                4 - definujemy szablon jaki ma być użyty do wyrenderowania strony indexowej
+              </li>
+              <li>
+                5 - warunek jeśli jest strona główna z postami
+              </li>
+              <li>
+                8 - renderuj naszą stroną z tymi danymi
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            index.twig
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% extends "base.twig" %}
+
+{% block content %}
+  <h2>{{ foo }}</h2>
+  {% for post in posts %}
+    {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+  {% else %}
+    Nie mamy żadnych postów, tej ;(.
+  {% endfor %}
+{% endblock %}</code></pre>
+          <aside class="notes">
+            <li>
+              1 - dziedziczymy z szablonu base.twig
+            </li>
+            <li>
+              3 - nadpisujemy zawartość bloku content zdefinowanego z base.twig docelową treścią
+            </li>
+            <li>
+              5 - zwróć uwagę na kontrukcję pętli for i else w przypadku braku wpisów
+            </li>
+            <li>
+              6 - dynamicznie załączenie szablonu z opcją bezpieczeństwa jak nie istnieje nasz teaser
+            </li>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            page.php
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+$context = Timber::get_context();
+$post = new TimberPost();
+$context['post'] = $post;
+$templates = array( 'page-' . $post->post_name . '.twig', 'page.twig' );
+Timber::render( $templates, $context );</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                2 - pobieramy posty przy pomocy TimberPost()
+              </li>
+              <li>
+                3 - przypisujemy do kontekstu
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            page.twig
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="content-wrapper">
+    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+      <section class="article-content">
+        <h1 class="article-h1">{{ post.title }}</h1>
+        <div class="article-body">
+          {{ post.content }}
+        </div>
+      </section>
+    </article>
+  </div><!-- /content-wrapper -->
+{% endblock %}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Jak widać w zmiennej post mamy dostęp do naszego obiektu i możemy wyświetlać wszystkie dane związane z naszym postem.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            page-plugin.twig
+          </h3>
+    <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="container content-wrapper">
+    {{ post.content }}
+  </div><!-- /content-wrapper -->
+{% endblock %}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Jeśli zechcemy utworzyć szablon dla wyjątkowej strony możemy to zrobić poprzez nadanie mu nazwy według konwencji WordPressa. W związku z tym, że nie mamy pliku page-plugin.php zostanie on obsłużony przez page.php
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            menu.twig
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% if menu %}
+  <ul>
+    {% for item in menu %}
+      <li class="{{ item.classes | join(' ') }}">
+        <a href="{{ item.get_link }}">{{ item.title }}</a>
+        {% include "menu.twig" with { 'menu': item.get_children } %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Rekurencyjnie wyświetlamy menu
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h1>
+            Integracja z ACF
+          </h1>
+        </section>
+        <section>
+          <h3>
+            Pole tekstowe / WYSIWYG
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+<h3>{{ post.title }}</h3>
+<div class="intro-text">
+   {{ post.get_field('my_wysiwyg_field') }}
+</div></code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Nie musimy tego dodatkowo pobierać z pozimu plików PHP. Timber robi to za nas. Używamy bezpośredni w szablonach Twiga funkcję get_field i działa ;).
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Obrazek
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+<img src="{{ TimberImage(post.get_field('hero_image')).src }}" /></code></pre>
+          <small>
+            <strong>Uwaga</strong>: Pole powinno zwracać ID obrazka.
+          </small>
+          <aside class="notes">
+            <ul>
+              <li>
+                Rekomendowana opcja do renderowania obrazków przy pomocy TimberImage.src
+              </li>
+              <li>
+                Istnieją alternatywne rozwiązania, o których nieco później
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Galeria zdjęć
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+{% for image in post.get_field('gallery') %}
+  <img src="{{ TimberImage(image) }}" />
+{% endfor %}</code></pre>
+        </section>
+        <section>
+          <h3>
+            Repeater
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+<h2>{{post.title}}</h2>
+<div class="my-list">
+  {% for item in post.get_field('my_repeater') %}
+    <div class="item">
+      <h4>{{ item.name }}</h4>
+      <h6>{{ item.info }}</h6>
+      <img src="{{TimberImage(item.picture).src}}" />
+    </div>
+  {% endfor %}
+</div></code></pre>
+        </section>
+        <section>
+          <h3>
+            Zagnieżdżony Repeater
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// Źle
+{% for gear in post.get_field('gear_items') %}
+  <h3> {{ gear.brand_name }} </h3>
+  {% for gear_feature in gear.get_field('features') %}
+    <li> {{ gear_feature }} </li>
+  {% endfor %}
+{% endfor %}
+
+// Dobrze
+{% for gear in post.get_field('gear_items') %}
+  <h3> {{ gear.brand_name }} </h3>
+  {% for gear_feature in gear.features %}
+    <li> {{ gear_feature }} </li>
+  {% endfor %}
+{% endfor %}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Nie ma potrzeby używać get_field na elementach potomnych. Timber wie, że jest tam zagnieżdżony repeater i możemy działać bezpośrednio bez konieczności pobierania.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h1>
+            Jeszcze więcej kodu ...
+          </h1>
+        </section>
+        <section>
+          <h3>
+            Zmienne globalne: site i theme
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// site
+{{ site.description }}
+{{ site.name }}
+{{ site.title }}
+{{ site.url }}
+...
+
+// theme
+{{ theme.link }} // dla motywów nadrzędnego
+{{ theme.parent.link }} // dla motywy podrzędnego
+{{ theme.path }} // scieżka do pliku CSS aktywnego motywu
+...
+          </code></pre>
+        </section>
+        <section>
+          <h3>
+            Obsługa obrazków
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// Podstawowe
+<img src="{{ post.thumbnail.src }}" alt="Image for {{ post.title }}" />
+
+// Z użyciem zdefinowanych rozmiarów
+<img src="{{ post.thumbnail.src('medium') }}" alt="Image for {{ post.title }}" />
+
+// Skalowanie
+<img src="{{ post.thumbnail.src|resize(300, 200) }}" />
+<img src="{{ post.thumbnail.src|resize(640) }}" />
+
+// Konwertowanie
+<img src="{{ post.thumbnail.src|tojpg }}" />
+<img src="{{ post.thumbnail.src|tojpg|resize(300, 300) }}" /> // filtry od lewej do prawej
+
+// Retina dzięki filtrowi retina
+<img src="{{ post.thumbnail.src }}" srcset="{{ post.thumbnail.src | retina(1) }} 1x,
+{{ post.thumbnail.src | retina(2) }}  2x,
+{{ post.thumbnail.src | retina(3) }}  3x,
+{{ post.thumbnail.src | retina(4) }}  4x">
+          </code></pre>
+        </section>
+        <section>
+          <h3>
+            Operacje na tekście
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// Formatowanie daty
+{{ post.post_date|date('d-m-Y') }} // 03-04-2017
+{{ now|date('Y') }} // 2017
+
+// Generowanie lorem ipsum
+// wymaga doinstalowania: https://github.com/timber/sugar
+{{ dummy(500)|wpautop }} // 500 wyrazów
+{{ post.title|dummy(15) }} // 15 wyrazów jeśli post.title pusty
+          </code></pre>
+        </section>
+        <section>
+          <h3>
+            Internacjonalizacja
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// Standardowo
+<p class="entry-meta">{{ __('Posted on', 'my-text-domain') }} [...]</p>
+
+// Notacja sprintf
+<p class="entry-meta">{{ __('Posted on %s', 'my-text-domain')|format(posted_on_date) }}</p>
+          </code></pre>
+        </section>
+        <section>
+          <h3>
+            Odpalanie funkcji z poziomu pliku szablonu
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+// Bez parametru
+{{ function('twenty_ten_entry_meta') }}
+
+// Z parametrem i wersji skróconej
+{{ fn('get_the_title', post.ID) }}
+          </code></pre>
+        </section>
+        <section>
+          <h1>
+            Debugowanie
+          </h1>
+        </section>
+        <section>
+          <h3>
+            Konfiguracja
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+// wp-config.php
+define('WP_DEBUG', true);
+          </code></pre>
+        </section>
+        <section>
+          <h3>
+            Użycie
+          </h3>
+          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+// single.twig
+{{ dump(post) }}
+
+// wynik
+/Users/marcin/Sites/private/timber/wp-content/plugins/timber-library/vendor/twig/twig/lib/Twig/Extension/Debug.php:60:
+object(Timber\Post)[2842]
+  public 'ImageClass' => string 'Timber\Image' (length=12)
+  public 'PostClass' => string 'Timber\Post' (length=11)
+  public 'TermClass' => string 'Timber\Term' (length=11)
+  public 'object_type' => string 'post' (length=4)
+  protected '_content' => null
+  protected '_permalink' => null
+  protected '_next' =>
+    array (size=0)
+      empty
+  protected '_prev' =>
+    array (size=0)
+      empty
+  public 'class' => string 'post-2 page type-page status-publish hentry' (length=43)
+  public 'id' => int 2
+  public 'ID' => int 2
+  public 'post_author' => string '1' (length=1)
+  public 'post_content' => string 'This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:
+
+<blockquote>Hi there! I'm a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin' caught in the rain.)</blockquote>
+
+...or somet'... (length=954)
+  public 'post_date' => string '2017-03-20 15:10:47' (length=19)
+  public 'post_excerpt' => string '' (length=0)
+  public 'post_parent' => int 0
+  public 'post_status' => string 'publish' (length=7)
+  public 'post_title' => string 'Sample Page' (length=11)
+  public 'post_type' => string 'page' (length=4)
+  public 'slug' => string 'sample-page' (length=11)
+  protected '__type' => null
+  public '_wp_page_template' => string 'default' (length=7)
+  public 'post_date_gmt' => string '2017-03-20 15:10:47' (length=19)
+  public 'comment_status' => string 'closed' (length=6)
+  public 'ping_status' => string 'open' (length=4)
+  public 'post_password' => string '' (length=0)
+  public 'post_name' => string 'sample-page' (length=11)
+  public 'to_ping' => string '' (length=0)
+  public 'pinged' => string '' (length=0)
+  public 'post_modified' => string '2017-03-20 15:10:47' (length=19)
+  public 'post_modified_gmt' => string '2017-03-20 15:10:47' (length=19)
+  public 'post_content_filtered' => string '' (length=0)
+  public 'guid' => string 'http://timber.dev/?page_id=2' (length=28)
+  public 'menu_order' => int 0
+  public 'post_mime_type' => string '' (length=0)
+  public 'comment_count' => string '0' (length=1)
+  public 'filter' => string 'raw' (length=3)
+  public 'status' => string 'publish' (length=7)
+  public 'custom' =>
+    array (size=1)
+      '_wp_page_template' => string 'default' (length=7)
+
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h1>
+          Podsumowanie
+        </h1>
+        <ul>
+          <li class="fragment">
+            Timber to nie to samo co Tinder ;)
+          </li>
+          <li class="fragment">
+            Upraszcza tworzenie motywów poprzez separacje logiki od warstwy prezentacji
+          </li>
+          <li class="fragment">
+            Dziedziczenie i modulrazycji na poziomie plików (szablonów) dzięki integracji z Twigiem
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>
+          Wiedza
+        </h1>
+        <ul>
+          <li>
+            <a href="https://www.upstatement.com/timber/">
+              Oficjalna strona Timbera
+            </a>
+          </li>
+          <li>
+            <a href="http://timber.github.io/timber/">
+              Dokumentacja Timbera
+            </a>
+          </li>
+          <li>
+            <a href="http://twig.sensiolabs.org/">
+              Dokumentacja Twiga
+            </a>
+          </li>
+          <li>
+            <a href="https://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974">
+              Kick-start WordPress Development With Twig
+            </a>
+          </li>
+          <li>
+            <a href="https://premium.wpmudev.org/blog/simplify-your-wordpress-theming-with-twig-and-timber/">
+              Simplify Your WordPress Theming With Twig And Timber
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Ogłoszenie parafialne</h1>
+        <p>
+          Jeśli chcesz tworzyć projekty z oparciu o Timbera i nie tylko to zajrzyj na <a href="https://www.xfive.co/jobs/">xfive.co/jobs/</a>. Przy zgłoszeniu wspomnij, że trafiłeś tam dzięki mnie. W przypadku pozytywnego przejście rekrutacji otrzymam mały bonusik ;).
+        </p>
+      </section>
+      <section>
+        <h1>Dzięki za uwagę</h1>
+        <p>
+          <a href="https://krzeminski.net">
+            www.krzeminski.net
+          </a>
+        </p>
+        <a href="https://github.com/marcinkrzeminski">
+          <i class="fa fa-fw fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/c/marcinkrzeminski">
+          <i class="fa fa-fw fa-youtube" aria-hidden="true"></i>
+        </a>
+        <a href="https://codepen.io/marcinkrzeminski">
+          <i class="fa fa-fw fa-codepen" aria-hidden="true"></i>
+        </a>
+        <a href="https://twitter.com/krzeminskinet">
+          <i class="fa fa-fw fa-twitter" aria-hidden="true"></i>
+        </a>
+      </section>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+//        slideNumber: 'c/t',
+
+          // More info https://github.com/hakimel/reveal.js#dependencies
+          dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'socket.io/socket.io.js', async: true },
+          { src: 'plugin/notes-server/client.js', async: true }
+          ]
+        });
+    </script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="node_modules/highlightjs-line-numbers.js/dist/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+  </body>
+</html>
