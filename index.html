@@ -230,7 +230,7 @@ Timber::render('single.twig', $context);</code></pre>
           <h3>
             functions.php
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="php" data-trim>
 if ( ! class_exists( 'Timber' ) ) {
   add_action( 'admin_notices', function() {
       echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php') ) . '</a></p></div>';
@@ -317,7 +317,7 @@ new StarterSite();</code></pre>
           <h3>
             base.twig
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% block html_head_container %}
   {% include 'html-header.twig' %}
   {% block head %}
@@ -380,7 +380,7 @@ new StarterSite();</code></pre>
           <h3>
             index.php
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="php" data-trim>
 $context = Timber::get_context();
 $context['posts'] = Timber::get_posts();
 $context['foo'] = 'bar';
@@ -416,7 +416,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             index.twig
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% extends "base.twig" %}
 
 {% block content %}
@@ -446,7 +446,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             page.php
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="php" data-trim>
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
@@ -467,7 +467,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             page.twig
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% extends "base.twig" %}
 
 {% block content %}
@@ -494,7 +494,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             page-plugin.twig
           </h3>
-    <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+    <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% extends "base.twig" %}
 
 {% block content %}
@@ -514,7 +514,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             menu.twig
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% if menu %}
   <ul>
     {% for item in menu %}
@@ -542,7 +542,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Pole tekstowe / WYSIWYG
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 <h3>{{ post.title }}</h3>
 <div class="intro-text">
    {{ post.get_field('my_wysiwyg_field') }}
@@ -559,7 +559,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Obrazek
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 <img src="{{ TimberImage(post.get_field('hero_image')).src }}" /></code></pre>
           <small>
             <strong>Uwaga</strong>: Pole powinno zwracać ID obrazka.
@@ -579,7 +579,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Galeria zdjęć
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 {% for image in post.get_field('gallery') %}
   <img src="{{ TimberImage(image).src }}" />
 {% endfor %}</code></pre>
@@ -588,7 +588,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Repeater
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 <h2>{{ post.title }}</h2>
 <div class="my-list">
   {% for item in post.get_field('my_repeater') %}
@@ -604,7 +604,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Zagnieżdżony Repeater
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // Źle
 {% for gear in post.get_field('gear_items') %}
   <h3> {{ gear.brand_name }} </h3>
@@ -637,7 +637,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Zmienne dostępne globalnie
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // site
 {{ site.description }}
 {{ site.name }}
@@ -656,7 +656,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Obsługa obrazków
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // Podstawowe
 <img src="{{ post.thumbnail.src }}" alt="Image for {{ post.title }}" >
 
@@ -676,7 +676,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Operacje na tekście
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // Formatowanie daty
 {{ post.post_date|date('d-m-Y') }} // 03-04-2017
 {{ now|date('Y') }} // 2017
@@ -691,7 +691,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Internacjonalizacja
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // Standardowo
 <p class="entry-meta">{{ __('Posted on', 'my-text-domain') }} [...]</p>
 
@@ -703,7 +703,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Odpalanie funkcji z poziomu pliku szablonu
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="twig" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="twig" data-trim>
 // Bez parametru
 {{ function('twenty_ten_entry_meta') }}
 
@@ -720,7 +720,7 @@ Timber::render( $templates, $context );</code></pre>
           <h3>
             Konfiguracja
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="php" data-trim>
 // wp-config.php
 define('WP_DEBUG', true);
           </code></pre>
@@ -729,7 +729,7 @@ define('WP_DEBUG', true);
           <h3>
             Użycie
           </h3>
-          <pre style="max-height: 400px; overflow-y: scroll;"><code class="php" data-trim>
+          <pre style="max-height: 580px; overflow-y: scroll;"><code class="php" data-trim>
 // single.twig
 {{ dump(post) }}
 
@@ -803,6 +803,9 @@ object(Timber\Post)[2842]
           <li class="fragment">
             Dziedziczenie i modularyzacja na poziomie plików (szablonów) dzięki integracji z Twigiem
           </li>
+          <li class="fragment">
+            Integracja z ACF
+          </li>
         </ul>
       </section>
       <section>
@@ -845,8 +848,11 @@ object(Timber\Post)[2842]
       <section>
         <h1>Chcesz pracować z Timberem?</h1>
         <p>
-          Jeśli chcesz tworzyć projekty z oparciu o Timbera i nie tylko to zajrzyj na <a href="https://www.xfive.co/jobs/">xfive.co/jobs/</a>. Przy zgłoszeniu wspomnij, że trafiłeś tam dzięki mnie. W przypadku pozytywnego przejścia rekrutacji otrzymam mały bonusik ;).
+          Jeśli chcesz tworzyć projekty z oparciu o Timbera i nie tylko to zajrzyj na <a href="https://www.xfive.co/jobs/"><strong>xfive.co/jobs/</strong></a>.
         </p>
+        <small>
+          * jeśli to nie problem to wspomnij, że trafiłeś tam dzięki mojej prezentacji a może dostanę za to mały bonusik ;)
+        </small>
       </section>
       <section>
         <h1>Dzięki za uwagę</h1>
